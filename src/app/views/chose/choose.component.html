@@ -1,0 +1,128 @@
+<main>
+    <body>
+        <nav>
+            <span>沪深</span>
+            <span>港股</span>
+            <span>美股</span>
+        </nav>
+        <h3>选择范围</h3>
+        <div class="queryRange">
+            <div class="range">
+                <span>
+                    市场：
+                    <select name="exchange" [(ngModel)] = "exchange">
+                        <option value="">全部A股</option>
+                        <option value="">沪市A股</option>
+                        <option value="">深市A股</option>
+                    </select>
+                </span>
+            </div>
+            <div class="range">
+                <span>
+                    行业：
+                    <select name="industry" [(ngModel)] = "indcode">
+                        <option value="">全部</option>
+                        <option *ngFor = 'let item of industries' value="{{item.encode}}">{{item.name}}</option>
+                    </select>
+                </span>
+            </div>
+            <div class="range">
+                <span>
+                    地域板块：
+                    <select name="area" [(ngModel)] = "areacode">
+                        <option value="">全部</option>
+                        <option *ngFor = 'let item of areaList' value="{{item}}">{{area[item]}}</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <h3>条件设置</h3>
+        <div class="query">
+            <div class="tabList">
+                <div class="tabTitle" *ngFor = 'let item of queryList' [class] = "{active: currentTab == item}"
+                (click) = "toggleTab(item)">
+                    {{item}}</div>
+            </div>
+            <div class="queryContent border" *ngIf="currentTab!=='财务报表'">
+                <div class="queryItem"
+                *ngFor = 'let item of toolList[currentTab]'
+                (change) = "select(item)">
+                    <input type="checkBox" value="{{item.field}}">
+                    <span>{{item.name}}</span>
+                </div>
+            </div>
+            <div *ngIf="currentTab=='财务报表'" class="border">
+                <div class="contentTitle">利润表</div>
+                <div class="queryContent" >
+                    <div *ngFor = 'let item of toolList[currentTab][0]["利润表"]'
+                     class="queryItem"
+                     (change) = "select(item)">
+                        <input type="checkBox" value="{{item.field}}">
+                        <span>{{item.name}}</span>
+                    </div>
+                </div>
+                <div class="contentTitle">每股数据</div>
+                <div class="queryContent" >
+                    <div *ngFor = 'let item of toolList[currentTab][1]["每股数据"]' 
+                    class="queryItem"
+                    (change) = "select(item)">
+                        <input type="checkBox" value="{{item.field}}">
+                        <span>{{item.name}}</span>
+                    </div>
+                </div>
+                <div class="contentTitle">资产负债表</div>
+                <div class="queryContent" >
+                    <div *ngFor = 'let item of toolList[currentTab][2]["资产负债表"]' 
+                    class="queryItem"
+                    (change) = "select(item)">
+                        <input type="checkBox" value="{{item.field}}">
+                        <span>{{item.name}}</span>
+                    </div>
+                </div>
+                <div class="contentTitle">现金流量表</div>
+                <div class="queryContent" >
+                    <div *ngFor = 'let item of toolList[currentTab][3]["现金流量表"]' 
+                    class="queryItem"
+                    (change) = "select(item)">
+                        <input type="checkBox" value="{{item.field}}">
+                        <span>{{item.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>筛选条件</h3>
+        <div class="queryTitle">
+            <div class="queryName">条件</div>
+            <div class="queryRangeValue">最小值</div>
+            <div>最大值</div>
+        </div>
+        <div >
+            <div *ngFor = 'let item of rangeList' class="rangeList">
+                <div ng-style = "{'width': '100px'}">{{item.name}}</div>
+                <div>
+                    <span >{{item.cmin}}</span>
+                    <input type="range" [(ngModel)] = "item.cmin" 
+                    [attr.min] = "item.min" [attr.max] = "item.max">
+                </div>
+                <div>
+                    <span>{{item.cmax}}</span>
+                    <input type="range" [(ngModel)] = "item.cmax"
+                    [attr.min] = "item.min" [attr.max] = "item.max">
+                </div>
+                
+            </div>
+        </div>
+        <div>
+            <button (click) = "queryStock()">筛选股票</button>
+        </div>
+        <div>
+            <div class="queryList"
+            *ngFor = 'let item of queryStock'>
+                {{item.name}}---{{item.symbol}}
+            </div>
+        </div>
+    </body>
+    <aside>
+
+    </aside>
+</main>

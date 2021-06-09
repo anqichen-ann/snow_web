@@ -1,0 +1,82 @@
+main {
+    width: 960px;
+    margin: 0 auto;
+    body {
+        width: 640px;
+        display: flex;
+        flex-direction: column;
+        nav {
+            margin-top: 20px;
+            border-bottom: 1px solid #efefef;
+            span {
+                display: inline-block;
+                width: 54px;
+                height: 30px;
+                margin-right: 3px;
+                border: 1px solid #efefef;
+                line-height: 30px;
+                text-align: center;
+                background-color: #efefef;
+            }
+        }
+        .queryRange {
+            display: flex;
+            height: 40px;
+            background-color: #f8f8f8;
+            align-items: center;
+            .range {
+                margin: 0 20px 0 10px;
+            }
+        }
+        .query {
+            display: flex;
+            .tabList {
+                width: 100px;
+                .tabTitle {
+                    padding: 10px 0;
+                    text-align: center;
+                }
+                .tabTitle.active {
+                    border: 1px solid #ccc;
+                    border-right: 1px solid #fff;
+                    transform: translate(1px, 0);
+                }
+            }
+            .queryContent {
+                padding-left: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                width: 540px;
+                .queryItem {
+                    width: 33.3%;
+                    padding: 5px 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+            .contentTitle {
+                margin-left: 24px;
+                margin-bottom: 10px;
+                padding: 2px 10px;
+                font-weight: 900px;
+                background-color: #efefef;
+            }
+            .border {
+                border-left: 1px solid #cccccc;
+            }
+        }
+        .queryTitle {
+            display: flex;
+            .queryName {
+                width: 150px;
+            }
+            .queryRangeValue{
+                width: 200px;
+            }
+        }
+        .rangeList {
+            display: flex;
+        }
+    }
+}

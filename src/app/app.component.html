@@ -1,2 +1,18 @@
+<div class="header">
+  <div class="nav">
+    <div class="logo">
+      <img src="../assets/snowLogo.png" alt="">
+    </div>
+    <div class="navList">
+      <div class="navitem" [routerLink] = "['/main']" routerLinkActive = "router-link-active" [routerLinkActiveOptions]="{exact: true}">首页</div>
+      <div class="navitem" [routerLink] = "['/choose']" routerLinkActive = "router-link-active">筛选器</div>
+      <div class="navitem" [routerLink] = "['/new-stock']" routerLinkActive = "router-link-active">热股榜</div>
+    </div>
+    <div class="search">
+      <input type="text" name="" placeholder="搜索">
+      <img src="../assets/search.png" alt="">
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>

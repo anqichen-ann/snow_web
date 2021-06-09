@@ -1,0 +1,15 @@
+<main>
+    <div class="stockList" *ngFor='let stock of stockList; index as key'>
+        <nav>
+            <span class="key" [class]="{topThree: key < 3}">{{key + 1}}</span>
+            <span class="name">{{stock.name}}</span>
+        </nav>
+        <div class="right">
+            <!-- <div class="img"> -->
+                <img [src]="getImgUrl(stock.increment)" alt="">
+            <!-- </div> -->
+            <div class="value" [class] = "{up: stock.increment > 0}">{{stock.value}}</div>
+        </div>
+    </div>
+
+</main>

@@ -1,0 +1,16 @@
+<main>
+    <div class="title">
+        <div class="day">{{now | timeStamp | date: 'dd'}}</div>
+        <div class="month">5月</div>
+    </div>
+    <body>
+        <article *ngFor = 'let item of dayInfoList'>
+            <div class="itemLeft">
+                {{item.created_at | timeStamp | date: 'HH:mm'}}
+            </div>
+            <div class="itemRight">
+                {{item.text}}
+            </div>
+        </article>
+    </body>
+</main>
